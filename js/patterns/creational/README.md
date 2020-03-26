@@ -15,3 +15,4 @@
 
 * Конструктор (constructor)
 * Фабрика (factory)
+* Прототипы (prototype)

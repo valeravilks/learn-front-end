@@ -13,11 +13,4 @@
 
 ## Перечень порождающих шаблонов
 
-* абстрактная фабрика (abstract factory);
-* строитель (builder);
-* фабричный метод (factory method);
-* ленивая инициализация (lazy initialization);
-* объектный пул (object pool);
-* прототип (prototype);
-* одиночка (singleton);
-* пул одиночек (Multiton).
+* Конструктор (constructor)

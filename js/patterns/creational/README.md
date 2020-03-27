@@ -16,3 +16,4 @@
 * Конструктор (constructor)
 * Фабрика (factory)
 * Прототипы (prototype)
+* Синглтон (singletone)

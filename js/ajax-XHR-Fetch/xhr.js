@@ -1,18 +1,18 @@
 // Создаем объект XMLHttpRequest
-let ajax = new XMLHttpRequest();
+let xhr = new XMLHttpRequest();
 
 /* Инициализируем его
 *  Первый параметр method - Http метод, обычно GET или POST
 *  Второй URL, куда будет отправлен запрос, строка или объект URL
 *
 */
-ajax.open('GET', 'https://jsonplaceholder.typicode.com/todos/1');
+xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos/1');
 
 // Сам запрос. Может содержать параметр body с телом запроса
-ajax.send();
+xhr.send();
 
 // Отмена запроса
-ajax.abort();
+xhr.abort();
 
 /* Установка типа ожидаемого ответа, может быть
  "" (по умолчанию) – строка,
@@ -21,24 +21,24 @@ ajax.abort();
  "blob" – Blob (для бинарных данных, смотрите в Blob),
  "document" – XML-документ (может использовать XPath и другие XML-методы),
  "json" – JSON (парсится автоматически). */
-ajax.responseType = 'json';
+xhr.responseType = 'json';
 
 // Таймаут - время, которые мы готовы ждать ответ
-ajax.timeout = 1000;
+xhr.timeout = 1000;
 
 // Происходит, когда получен какой-то ответ с сервера
-ajax.onload = function() {
-    console.log(ajax.response); // вывод ответа с сервера
-    console.log(ajax.status); // статус запроса
+xhr.onload = function() {
+    console.log(xhr.response); // вывод ответа с сервера
+    console.log(xhr.status); // статус запроса
 }
 
 // Когда запрос не может быть выполнен, нет соединения или невалидный URL
-ajax.onerror = function() {
+xhr.onerror = function() {
     console.log('Error connect');
 }
 
 // Сообщение о прогрессе ответа
-ajax.onprogress = function(event) {
+xhr.onprogress = function(event) {
     // event.loaded - количество загруженных байт
     // event.lengthComputable = равно true, если сервер присылает заголовок Content-Length
     // event.total - количество байт всего (только если lengthComputable равно true)
@@ -46,13 +46,13 @@ ajax.onprogress = function(event) {
 }
 
 // Выполняется, если запрос не отвечает по заданному таймауту
-ajax.ontimeout = function () {
+xhr.ontimeout = function () {
     console.log('Запрос не отработал по таймауту');
 }
 
 // Состояние запроса, которое меняется по мере выполнения запроса (морально устарело)
-ajax.onreadystatechange = function() {
-    switch (ajax.readyState) {
+xhr.onreadystatechange = function() {
+    switch (xhr.readyState) {
         case 0 : //исходное состояние
             console.log(0);
             break;
@@ -74,13 +74,13 @@ ajax.onreadystatechange = function() {
 // Http заголовки
 
 // Установка своих http заголовков запроса
-ajax.setRequestHeader('Content-Type', 'application/json') // его нельзя отменить или перезаписать
+xhr.setRequestHeader('Content-Type', 'application/json') // его нельзя отменить или перезаписать
 
 // Получение заголовка ответа (кроме Set-Cookie и Set-Cookie2)
-ajax.getResponseHeader('Content-Type');
+xhr.getResponseHeader('Content-Type');
 
 // Получение всех заголовков ответа (кроме Set-Cookie и Set-Cookie2)
-ajax.getAllResponseHeaders();
+xhr.getAllResponseHeaders();
 
 
 // Post запросы и FormData
@@ -114,5 +114,7 @@ xhr.upload.onload = function() {
 xhr.upload.onerror = function() {
     alert(`Произошла ошибка во время отправки: ${xhr.status}`);
 };
+
+
 
 
